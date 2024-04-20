@@ -1,0 +1,31 @@
+
+<div class="container-fluid">
+    <div class="row">
+
+            <div class="col-md-4" *ngFor="let p of products">
+            
+                <div class="card">
+                    <div class="card-header">
+                        <img [src]="p.productImage" alt="" class="card-img-top">
+                    </div>
+                        <div class="card-body" *ngIf="!p.productEdit">
+                            <h4 class="card-title">{{p.productDescription}}</h4>
+                            <p class="card-text">Company : {{p.productCompany}}</p>
+                            <p class="card-text">Price : {{p.productPrice}}</p>
+                        </div>
+                        <div class="card-body" *ngIf="p.productEdit">
+                            <input type="text" name="p" [(ngModel)]="p.productDescription">
+                            <input type="text" name="p" [(ngModel)]="p.productCompany">
+                            <input type="text" name="p" [(ngModel)]="p.productPrice">
+                        </div>   
+                        <div>
+                            <button class="btn btn-warning" *ngIf="!p.productEdit" (click)="toUpdate(p)">Edit</button>
+                            <button class="btn btn-primary" *ngIf="p.productEdit" (click)="toSave(p)">Save</button>
+                            <button class="btn btn-danger" (click)="delete(p)">Delete</button>
+                        </div>
+                </div>
+    
+            </div>
+
+    </div>
+</div>
